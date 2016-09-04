@@ -1,0 +1,30 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "Comparte tus fotos con tu comunidad",
+  "main": "server.js",
+  "author": "Juan Carlos",
+  "license": "MIT",
+  "dependencies": {
+    "empty-element": "^1.0.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "page": "^1.7.1",
+    "pug": "^2.0.0-beta5",
+    "title": "^1.0.0",
+    "yo-yo": "^1.2.2"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build": "gulp",
+    "start": "start gulp watch && start node server.js"
+  }
+}
