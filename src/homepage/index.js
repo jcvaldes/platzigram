@@ -14,7 +14,8 @@ page('/', function (ctx, next) {
             },
             url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
             likes: 10,
-            liked: false
+            liked: false,
+            createdAt: new Date()
         },
         {
             user: {
@@ -23,7 +24,8 @@ page('/', function (ctx, next) {
             },
             url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
             likes: 1024,
-            liked: true
+            liked: true,
+            createdAt: new Date().setDate(new Date().getDate() - 10)
         }
     ]
     empty(main).appendChild(template(pictures));
