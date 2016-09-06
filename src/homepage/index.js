@@ -14,7 +14,7 @@ page('/', function (ctx, next) {
             },
             url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
             likes: 10,
-            liked: true
+            liked: false
         },
         {
             user: {
