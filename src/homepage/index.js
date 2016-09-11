@@ -13,7 +13,7 @@ page('/', function (ctx, next) {
                 avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
             },
             url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
-            likes: 10,
+            likes: 0,
             liked: false,
             createdAt: new Date()
         },
@@ -23,7 +23,7 @@ page('/', function (ctx, next) {
                 avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
             },
             url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
-            likes: 1024,
+            likes: 1,
             liked: true,
             createdAt: new Date().setDate(new Date().getDate() - 10)
         }
