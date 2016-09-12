@@ -5,6 +5,12 @@ app.set('view engine', 'pug');
 
 app.use(express.static('public'));
 
+// function restrict(req, res, next) {
+//     if(req.user) return next();
+//     res.redirect('/signin');
+// }
+
+//2do param restrict
 app.get('/', function(req, res) {
     res.render('index', {title: 'Platzigram'});
 });
@@ -15,6 +21,34 @@ app.get('/signup', function(req, res) {
 
 app.get('/signin', function(req, res) {
     res.render('index', {title: 'Platzigram - Signin'});
+});
+
+app.get('/api/pictures', function(req, res, next) {
+    var pictures = [
+        {
+            user: {
+                username: 'jcvaldes',
+                avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
+            },
+            url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
+            likes: 0,
+            liked: false,
+            createdAt: new Date().getTime()
+        },
+        {
+            user: {
+                username: 'jcvaldes',
+                avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
+            },
+            url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
+            likes: 1,
+            liked: true,
+            createdAt: new Date().setDate(new Date().getDate() - 10)
+        }
+    ];
+    setTimeout(function () {
+        res.send(pictures);
+    }, 2000);
 });
 
 app.listen(3000, function(err){

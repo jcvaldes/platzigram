@@ -2,31 +2,22 @@ var page = require('page');
 var template = require('./template');
 var empty = require('empty-element');
 var title = require('title');
+var request = require('superagent');
+var header = require('../header');
 
-page('/', function (ctx, next) {
+page('/', header, loadPictures, function (ctx, next) {
     title('Platzigram');
     var main = document.getElementById('main-container');
-    var pictures = [
-        {
-            user: {
-                username: 'jcvaldes',
-                avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
-            },
-            url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
-            likes: 0,
-            liked: false,
-            createdAt: new Date()
-        },
-        {
-            user: {
-                username: 'jcvaldes',
-                avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
-            },
-            url: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460',
-            likes: 1,
-            liked: true,
-            createdAt: new Date().setDate(new Date().getDate() - 10)
-        }
-    ]
-    empty(main).appendChild(template(pictures));
+
+    empty(main).appendChild(template(ctx.pictures));
 });
+
+function loadPictures(ctx, next) {
+    request
+        .get('/api/pictures')
+        .end(function (err, res) {
+            if(err) return console.log(err);
+            ctx.pictures = res.body;
+            next();
+        })
+}
