@@ -3,7 +3,7 @@ var template = require('./template');
 var empty = require('empty-element');
 var title = require('title');
 //var request = require('superagent');
-var request = require('axios');
+//var request = require('axios');
 var header = require('../header');
 
 page('/', header, loadPictures, function (ctx, next) {
@@ -24,14 +24,15 @@ page('/', header, loadPictures, function (ctx, next) {
 // }
 
 function loadPictures(ctx, next) {
-    request
-        .get('/api/pictures')
+    fetch('/api/pictures')
         .then(function (res) {
-            ctx.pictures = res.data;
+            return res.json();
+        })
+        .then(function (pictures) {
+            ctx.pictures = pictures;
             next();
         })
         .catch(function (err) {
             console.error(err);
-
         })
 }
