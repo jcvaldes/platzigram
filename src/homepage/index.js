@@ -2,7 +2,8 @@ var page = require('page');
 var template = require('./template');
 var empty = require('empty-element');
 var title = require('title');
-var request = require('superagent');
+//var request = require('superagent');
+var request = require('axios');
 var header = require('../header');
 
 page('/', header, loadPictures, function (ctx, next) {
@@ -12,12 +13,25 @@ page('/', header, loadPictures, function (ctx, next) {
     empty(main).appendChild(template(ctx.pictures));
 });
 
+// function loadPictures(ctx, next) {
+//     request
+//         .get('/api/pictures')
+//         .end(function (err, res) {
+//             if(err) return console.log(err);
+//             ctx.pictures = res.body;
+//             next();
+//         })
+// }
+
 function loadPictures(ctx, next) {
     request
         .get('/api/pictures')
-        .end(function (err, res) {
-            if(err) return console.log(err);
-            ctx.pictures = res.body;
+        .then(function (res) {
+            ctx.pictures = res.data;
             next();
+        })
+        .catch(function (err) {
+            console.error(err);
+
         })
 }
