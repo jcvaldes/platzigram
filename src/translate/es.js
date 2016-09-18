@@ -14,5 +14,7 @@
      'signup.have-account': '¿Tienes una cuenta?',
      'signin': 'Entrar',
      'signin.not-have-account': '¿No tienes una cuenta?',
-     'language': 'Idioma'
+     'language': 'Idioma',
+     'upload-picture': 'Subir foto',
+     'upload': 'Subir'
  }

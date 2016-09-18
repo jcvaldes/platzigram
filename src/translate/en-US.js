@@ -17,5 +17,7 @@ module.exports = {
     'signup.have-account': 'Alredy have an account?',
     'signin': 'Signin',
     'signin.not-have-account': 'Don\'t have an account?',
-    'language': 'Language'
+    'language': 'Language',
+    'uploa-picture': 'Upload picture',
+    'upload': 'Upload'
 }
