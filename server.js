@@ -61,9 +61,9 @@ app.get('/api/pictures', function(req, res, next) {
             createdAt: new Date().setDate(new Date().getDate() - 10)
         }
     ];
-    setTimeout(function () {
-        res.send(pictures);
-    }, 2000);
+
+    res.send(pictures);
+
 });
 
 app.post('/api/pictures', function (req, res) {
@@ -74,6 +74,51 @@ app.post('/api/pictures', function (req, res) {
         return res.send("File uploaded successfully");
     })
 });
+
+app.get('/api/user/:username', function(req, res) {
+   const user = {
+       username: 'jcvaldes',
+       avatar: 'https://avatars1.githubusercontent.com/u/2944428?v=3&s=466',
+       pictures: [
+           {
+               id: 1,
+               src: 'http://k42.kn3.net/taringa/3/4/7/2/3/2/7/djheistechs/457.jpg?7101',
+               likes: 3,
+           },
+           {
+               id: 2,
+               src: 'http://media-cdn.incondicionales.com.mx/media/galeria/325/7/8/7/3/n_chivas_guadalajara_la_aficion-3093787.jpg',
+               likes: 13,
+           },
+           {
+               id: 3,
+               src: 'http://k42.kn3.net/taringa/3/4/7/2/3/2/7/djheistechs/457.jpg?7101',
+               likes: 0,
+           },
+           {
+               id: 4,
+               src: 'http://k42.kn3.net/taringa/3/4/7/2/3/2/7/djheistechs/457.jpg?7101',
+               likes: 53,
+           },
+           {
+               id: 5,
+               src: 'http://3.bp.blogspot.com/-tCueNnvcZV0/VhLWaZBBzHI/AAAAAAAABFE/PI60P7H96zU/s1600/emo_adictamente.blogspot%2B%252818%2529.jpg',
+               likes: 53,
+           },
+           {
+               id: 6,
+               src: 'http://k42.kn3.net/taringa/3/4/7/2/3/2/7/djheistechs/457.jpg?7101',
+               likes: 53,
+           },
+       ]
+   }
+   res.send(user);
+})
+
+//Se define a lo ultimo
+app.get('/:username', function(req, res) {
+    res.render('index', {title: `Platzigram - ${req.params.username}`});
+})
 
 app.listen(3000, function(err){
    if(err){
