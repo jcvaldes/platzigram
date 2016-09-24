@@ -169,14 +169,14 @@ $avatar-size: 48px;
     margin-bottom: 20px;
     position: relative;
 
-    //&:hover {
-    //  .picture {
-    //    @include prefix(filter, blur(5px) grayscale(100%));
-    //  }
-    //  .likes {
-    //    display: flex;
-    //  }
-    //}
+    &:hover {
+      .picture {
+        @include prefix(filter, blur(5px) grayscale(100%));
+      }
+      .likes {
+        display: flex;
+      }
+    }
     .picture {
       margin-bottom: 20px;
       display: block;
@@ -212,5 +212,24 @@ $avatar-size: 48px;
   .fa-heart {
     display: inline-block;
     color: $platzugram-red;
+  }
+}
+
+.like-heart {
+  font-size: 10em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  transition: all .3s ease;
+  opacity: 0;
+
+  &.liked {
+    color: $platzugram-red;
+    font-size: 12em;
+    display: block;
+    transition: all .5s ease;
+    opacity: 1;
   }
 }
