@@ -8,17 +8,19 @@ page('/:username', loadUser, header, function (ctx, next) {
     title(`Platzigram - ${ctx.params.username}`);
     var main = document.getElementById('main-container');
     empty(main).appendChild(template(ctx.user));
+    $('.materialboxed').materialbox();
 });
 
 page('/:username/:id', loadUser, header, function (ctx, next) {
     title(`Platzigram - ${ctx.params.username}`);
     var main = document.getElementById('main-container');
     empty(main).appendChild(template(ctx.user));
-    $(`#modal${ctx.params.id}`).openModal({
-        complete: function () {
-            page(`/${ctx.params.username}`)
-        }
-    });
+    // $(`#modal${ctx.params.id}`).openModal({
+    //     complete: function () {
+    //         page(`/${ctx.params.username}`)
+    //     }
+    // });
+    $('.materialboxed').materialbox();
 });
 
 async function loadUser(ctx, next) {
