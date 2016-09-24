@@ -2,6 +2,7 @@ $secondary-color: #125688;
 $platzugram-red: #f44336;
 
 @import "node_modules/materialize-css/sass/materialize.scss";
+@import "./loader";
 
 @mixin prefix($property, $value, $vendors: webkit moz ms o) {
   @if $vendors {
@@ -200,5 +201,16 @@ $avatar-size: 48px;
       margin-right: 8px;
       display: inline-block;
     }
+  }
+}
+
+.modal {
+  img{
+    max-width: 90%;
+    max-height: 90%;
+  }
+  .fa-heart {
+    display: inline-block;
+    color: $platzugram-red;
   }
 }
