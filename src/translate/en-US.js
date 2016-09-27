@@ -1,5 +1,5 @@
 module.exports = {
-    likes: '{ likes, plural, ' +
+    'likes': '{ likes, plural, ' +
             '=0 { no likes }' +
             '=1 { # like }' +
             'other { # likes }}',
@@ -18,6 +18,6 @@ module.exports = {
     'signin': 'Signin',
     'signin.not-have-account': 'Don\'t have an account?',
     'language': 'Language',
-    'uploa-picture': 'Upload picture',
+    'upload-picture': 'Upload picture',
     'upload': 'Upload'
 }

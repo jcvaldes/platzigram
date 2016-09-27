@@ -205,6 +205,10 @@ $avatar-size: 48px;
 }
 
 .modal {
+  //width: 55%!important;
+  //max-height: 100%!important;
+  //overflow-y: hidden!important;
+
   img{
     max-width: 90%;
     max-height: 90%;
@@ -231,5 +235,36 @@ $avatar-size: 48px;
     display: block;
     transition: all .5s ease;
     opacity: 1;
+  }
+}
+
+#modalCamera {
+  .cameraPicture{
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      width: 400px;
+      height: 300px;
+      top: 0;
+      transition: all .5s ease;
+      opacity: 1;
+    }
+
+    .overlay {
+      opacity: 0;
+    }
+
+    img {
+      max-width: 400px!important;
+      max-height: 300px!important;
+    }
+  }
+
+  button {
+    float: none;
   }
 }

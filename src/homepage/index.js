@@ -5,12 +5,68 @@ var title = require('title');
 //var request = require('superagent');
 var request = require('axios');
 var header = require('../header');
+var Webcam = require('webcamjs');
+var picture = require('../picture-card');
 
 page('/', header, loading, asyncLoad, function (ctx, next) {
     title('Platzigram');
     var main = document.getElementById('main-container');
 
     empty(main).appendChild(template(ctx.pictures));
+    const  picturePreview = $('#picturePreview');
+    const  cameraInput = $('#cameraInput');
+    const  cancelPicture = $('#cancelPicture');
+    const  shootButton = $('#shoot');
+    const  uploadButton = $('#uploadButton');
+
+
+    function reset() {
+        picturePreview.addClass('hide');
+        cancelPicture.addClass('hide');
+        uploadButton.addClass('hide');
+        shootButton.removeClass('hide');
+        cameraInput.removeClass('hide');
+    }
+
+    cancelPicture.click(reset);
+
+    $('.modal-trigger').leanModal({
+        ready: function () {
+            Webcam.attach('#cameraInput');
+            shootButton.click((ev)=>{
+                Webcam.snap((data_uri) =>{
+                    picturePreview.html(`<img src="${data_uri}" />`);
+                    picturePreview.removeClass('hide');
+                    cancelPicture.removeClass('hide');
+                    uploadButton.removeClass('hide');
+                    shootButton.addClass('hide');
+                    cameraInput.addClass('hide');
+                    uploadButton.off('click');
+                    uploadButton.click(()=> {
+                        const pic = {
+                            url: data_uri,
+                            likes: 0,
+                            liked: false,
+                            createAt: +new Date(),
+                            user: {
+                                username: 'jcvaldes',
+                                avatar: 'https://avatars0.githubusercontent.com/u/2944428?v=3&s=460https://avatars0.githubusercontent.com/u/2944428?v=3&s=460'
+                            }
+                        }
+                        $('#pictureCards').prepend(picture(pic));
+
+                        this.complete();
+
+                        $('#modalCamera').closeModal();
+                    })
+                })
+            })
+        },
+        complete: function () {
+            Webcam.reset();
+            reset();
+        }
+    })
 });
 
 function loading(ctx, next) {
